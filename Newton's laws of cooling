@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <math.h>
+
+#define AMBIENT_TEMP 20.0 
+double newtonsLawOfCooling(double initialTemp, double coolingRate, double time) {
+    return AMBIENT_TEMP + (initialTemp - AMBIENT_TEMP) * exp(-coolingRate * time);
+}
+
+int main() {
+    double initialTemp = 70.0;
+    double finalTemp = 50.0;
+    double time = 5.0; 
+    double coolingRate = log((initialTemp - AMBIENT_TEMP) / (finalTemp - AMBIENT_TEMP)) / time;
+    double nextTime = 10.0;
+    double temperature = newtonsLawOfCooling(finalTemp, coolingRate, nextTime);
+    printf("Temperature after %.2lf minutes: %.2lf Celsius\n", nextTime, temperature);
+    return 0;
+}
